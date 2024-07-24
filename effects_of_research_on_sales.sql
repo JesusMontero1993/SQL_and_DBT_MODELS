@@ -53,7 +53,7 @@ final AS ( -- This CTE transforms the opportunity-level data into company-level 
         SUM(CASE WHEN opp_close_date >= deck_presented_date AND is_opp_won = TRUE THEN 1 ELSE 0 END) AS total_opps_won_after_deck_delivered,
         SUM(CASE WHEN opp_close_date >= deck_presented_date AND is_opp_won = FALSE THEN 1 ELSE 0 END) AS total_opps_lost_after_deck_delivered,
         SUM(CASE WHEN opp_close_date >= deck_presented_date AND is_opp_won = TRUE AND type = 'Renewal' THEN 1 ELSE 0 END) AS total_renewal_won_after_deck_delivered,
-        SUM(CASE WHEN opp_close_date >= deck_presented_date AND is_opp_won = TRUE AND (type = 'New' OR type = 'New ACS Logo') THEN 1 ELSE 0 END) AS total_new_opps_won_after_deck_delivered
+        SUM(CASE WHEN opp_close_date >= deck_presented_date AND is_opp_won = TRUE AND (type = 'New' OR type = 'New Logo') THEN 1 ELSE 0 END) AS total_new_opps_won_after_deck_delivered
     FROM 
         unioned
     GROUP BY 
